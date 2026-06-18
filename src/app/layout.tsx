@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { ConfigProvider, Layout } from 'antd';
-import Navigation from '@/components/Navigation';
+import ClientLayout from '@/components/ClientLayout';
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,25 +15,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <ConfigProvider
-          theme={{
-            token: {
-              colorPrimary: '#ef4444',
-              borderRadius: 8,
-              fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
-            },
-          }}
-        >
-          <Layout style={{ minHeight: '100vh', backgroundColor: '#f8fafc' }}>
-            <Navigation />
-            <Layout.Content>
-              {children}
-            </Layout.Content>
-            <Layout.Footer style={{ textAlign: 'center', color: '#64748b' }}>
-              PokePrice LIVE ©{new Date().getFullYear()} Created with Antigravity
-            </Layout.Footer>
-          </Layout>
-        </ConfigProvider>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
